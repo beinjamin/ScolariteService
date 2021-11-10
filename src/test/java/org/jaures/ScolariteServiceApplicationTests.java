@@ -8,8 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +30,7 @@ class Student {
 	
 	
 }
+@RepositoryRestResource
 interface StudentRepository extends JpaRepository<Student,Long>{
 	
 }
@@ -35,6 +39,13 @@ class ScolariteServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
+	}
+	
+	@Bean
+	CommandLineRunner start(StudentRepository studentRepository) {
+	return args -> {
+		studentRepository.save(new Student(null,"Hassan","jauresbeinjamin@gmail.com",new Date()));
+	};
 	}
 
 }
