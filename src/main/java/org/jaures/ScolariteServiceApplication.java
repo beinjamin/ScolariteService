@@ -40,7 +40,7 @@ public class ScolariteServiceApplication {
 	@Bean
 	CommandLineRunner start(StudentRepository studentRepository) {
 		return args -> {
-			studentRepository.save(new Student(null,"Hassan","jaures@gmail.com",new Date()));
+			studentRepository.save(new Student());
 		
 		studentRepository.findAll().forEach(System.out::println);		
 		};
