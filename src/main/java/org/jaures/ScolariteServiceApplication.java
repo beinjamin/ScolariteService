@@ -19,9 +19,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 @Entity @NoArgsConstructor @AllArgsConstructor @ToString
 class Student{
-	public Student(Object object, String string, String string2, Date date) {
-		// TODO Auto-generated constructor stub
-	}
+
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
@@ -43,8 +42,8 @@ public class ScolariteServiceApplication {
 	@Bean
 	CommandLineRunner start(StudentRepository studentRepository) {
 		return args -> {
-			studentRepository.save(new Student(null,"Hassan","jaures@gmail.com",new Date()));
-		
+			studentRepository.save(new Student());
+			
 		studentRepository.findAll().forEach(System.out::println);		
 		};
 	}
