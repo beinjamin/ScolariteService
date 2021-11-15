@@ -21,6 +21,16 @@ import lombok.ToString;
 class Student{
 
 
+	public Student(Long id, String name, String email, Date birthDate) {
+		this.id=id;
+		this.name=name;
+		this.email=email;
+		this.birthDate=birthDate;
+	}
+	
+	public Student() {
+		
+	}
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
@@ -42,7 +52,7 @@ public class ScolariteServiceApplication {
 	@Bean
 	CommandLineRunner start(StudentRepository studentRepository) {
 		return args -> {
-			studentRepository.save(new Student());
+			studentRepository.save(new Student(null,"Jaures","jauresbeinjamin@gmail.com",new Date()));
 			
 		studentRepository.findAll().forEach(System.out::println);		
 		};
